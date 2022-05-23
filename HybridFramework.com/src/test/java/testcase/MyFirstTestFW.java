@@ -1,0 +1,30 @@
+package testcase;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.testng.annotations.Test;
+import base.BaseTest;
+
+public class MyFirstTestFW extends BaseTest {
+	@Test
+	public static void LoginTest() throws InterruptedException, IOException
+	{
+
+		driver.manage().window().maximize();
+		driver.findElement(By.cssSelector("#header > div.header__topBar > div > section.header__topBar_sectionRight > ul > li.header__topBarIconList_profile-icon > span > svg")).click();
+		driver.findElement(By.linkText("Sign Up")).click();
+		Thread.sleep(4000);
+		driver.findElement(By.xpath("//*[@id='spree_user_email']")).sendKeys("kavanaks1999132gmail.com");
+		System.out.println("Clicked Successfully");
+		File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(screenshotFile, new File("C:\\Users\\mindsdet158\\eclipse-workspace\\HybridFramework.com\\Screenshots\\Screenshots.png"));
+		System.out.println("Screenshot captured successfully");
+
+	} 
+
+}
